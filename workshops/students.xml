@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+
+<!DOCTYPE students [
+  <!ELEMENT students (student+)>
+  <!ELEMENT student (first_name, last_name, gpa)>
+  <!ELEMENT first_name (#PCDATA)>
+  <!ELEMENT last_name (#PCDATA)>
+  <!ELEMENT gpa (#PCDATA)>
+  <!ATTLIST student num NMTOKEN #REQUIRED>
+]>
+
+<students> 
+  <student num="100005"> 
+    <first_name>Christopher</first_name> 
+    <last_name>Arnold</last_name>
+    <gpa>2.0</gpa>
+  </student> 
+  <student num="100002"> 
+    <first_name>Mary</first_name> 
+    <last_name>Campbell</last_name>
+    <gpa>1.8</gpa>
+  </student> 
+  <student num="100003"> 
+    <first_name>John</first_name> 
+    <last_name>Meier</last_name>
+    <gpa>2.8</gpa>
+  </student> 
+  <student num="100001">  
+    <first_name>Sue</first_name> 
+    <last_name>Reed</last_name>
+    <gpa>3.5</gpa>
+  </student> 
+  <student num="100004"> 
+    <first_name>Stephen</first_name> 
+    <last_name>Zweig</last_name>
+    <gpa>2.2</gpa>
+  </student> 
+</students>

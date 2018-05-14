@@ -1,0 +1,22 @@
+table.students {
+  background-color: gray;
+  font-family: arial;
+  margin: 10px 0pt 15px;
+  font-size: 8pt;
+  width: 100%;
+  text-align: left;
+}
+
+table.students thead tr th {
+  background-color: orange;
+  border: 1px solid #FFF;
+  font-size: 8pt;
+  padding: 10px;
+}
+
+table.students tbody tr td {
+  background-color: white;
+  color: black;
+  vertical-align: top;
+  padding: 10px;
+}
