@@ -12,11 +12,15 @@ def word_counts(text, words):
     >>> word_counts(emma, ['the', 'a'])
     [4842, 3001]
     """
+<<<<<<< HEAD
+    return []
+=======
     tokens = nltk.word_tokenize(text)
     result1 = []
     for word in words:
         result1.append(tokens.count(word))
     return result1
+>>>>>>> Upload
 
 # Task 2 (1 mark)
 def pos_counts(text, pos_list):
@@ -25,6 +29,9 @@ def pos_counts(text, pos_list):
     >>> pos_counts(emma, ['DET', 'NOUN'])
     [14352, 32029]
     """
+<<<<<<< HEAD
+    return []
+=======
     toksents = [nltk.word_tokenize(s) for s in nltk.sent_tokenize(text)]
     tagged = nltk.pos_tag_sents(toksents, tagset='universal')
     result2 = []
@@ -34,11 +41,15 @@ def pos_counts(text, pos_list):
             count = count + len([w for (w,t) in tag if t == pos])
         result2.append(count)
     return result2
+>>>>>>> Upload
 
 # Task 3 (1 mark)
 import re
 VC = re.compile('[aeiou]+[^aeiou]+', re.I)
+<<<<<<< HEAD
+=======
 
+>>>>>>> Upload
 def count_syllables(word):
     return len(VC.findall(word))
 
@@ -48,6 +59,13 @@ def compute_fres(text):
     >>> compute_fres(emma) # doctest: +ELLIPSIS
     99.40...
     """
+<<<<<<< HEAD
+    return 0.0
+
+# Task 4 (2 marks)
+import re
+regexp = re.compile('.*(st|nd|rd|th)$')
+=======
     tokens = nltk.word_tokenize(text)
     sents = nltk.sent_tokenize(text)
     count = 0
@@ -63,11 +81,21 @@ regexpnum = re.compile('.*(st|nd|rd|th)$')
 regexpth = re.compile('.*(th)$')
 regexpieth = re.compile('.*(ieth)$')
 
+>>>>>>> Upload
 def annotateOD(listoftokens):
     """Annotate the ordinal numbers in the list of tokens
     >>> annotateOD("the second tooth".split())
     [('the', ''), ('second', 'OD'), ('tooth', '')]
     """
+<<<<<<< HEAD
+    result = []
+    for t in listoftokens:
+        if regexp.match(t):
+            result.append((t, 'OD'))
+        else:
+            result.append((t, ''))
+    return result
+=======
     tagged = nltk.pos_tag(listoftokens, tagset='universal')
     result4 = []
     for (w, t) in tagged:
@@ -94,6 +122,7 @@ def annotateOD(listoftokens):
         else:
             result4.append((w, ''))
     return result4
+>>>>>>> Upload
     
 # DO NOT MODIFY THE CODE BELOW
 

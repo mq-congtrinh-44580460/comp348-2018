@@ -12,11 +12,7 @@ def word_counts(text, words):
     >>> word_counts(emma, ['the', 'a'])
     [4842, 3001]
     """
-    tokens = nltk.word_tokenize(text)
-    result1 = []
-    for word in words:
-        result1.append(tokens.count(word))
-    return result1
+    return []
 
 # Task 2 (1 mark)
 def pos_counts(text, pos_list):
@@ -25,20 +21,11 @@ def pos_counts(text, pos_list):
     >>> pos_counts(emma, ['DET', 'NOUN'])
     [14352, 32029]
     """
-    toksents = [nltk.word_tokenize(s) for s in nltk.sent_tokenize(text)]
-    tagged = nltk.pos_tag_sents(toksents, tagset='universal')
-    result2 = []
-    for pos in pos_list:
-        count = 0
-        for tag in tagged:
-            count = count + len([w for (w,t) in tag if t == pos])
-        result2.append(count)
-    return result2
+    return []
 
 # Task 3 (1 mark)
 import re
 VC = re.compile('[aeiou]+[^aeiou]+', re.I)
-
 def count_syllables(word):
     return len(VC.findall(word))
 
@@ -48,52 +35,23 @@ def compute_fres(text):
     >>> compute_fres(emma) # doctest: +ELLIPSIS
     99.40...
     """
-    tokens = nltk.word_tokenize(text)
-    sents = nltk.sent_tokenize(text)
-    count = 0
-    for token in tokens:
-        count = count + count_syllables(token)
-    result3 = 206.835 - 1.015*(len(tokens)/len(sents)) - 84.6*(count/len(tokens))
-    return result3
+    return 0.0
 
 # Task 4 (2 marks)
 import re
-regexprare = re.compile('.*(first|second|third|fifth|eigth|ninth|twelfth)$')
-regexpnum = re.compile('.*(st|nd|rd|th)$')
-regexpth = re.compile('.*(th)$')
-regexpieth = re.compile('.*(ieth)$')
-
+regexp = re.compile('.*(st|nd|rd|th)$')
 def annotateOD(listoftokens):
     """Annotate the ordinal numbers in the list of tokens
     >>> annotateOD("the second tooth".split())
     [('the', ''), ('second', 'OD'), ('tooth', '')]
     """
-    tagged = nltk.pos_tag(listoftokens, tagset='universal')
-    result4 = []
-    for (w, t) in tagged:
-        if regexpnum.match(w) and (t == 'NUM'):
-            result4.append((w, 'OD'))
-        elif regexprare.match(w):
-            result4.append((w, 'OD'))
-        elif regexpth.match(w):
-            temp = w[:-2]
-            temp = nltk.word_tokenize(temp)
-            tag = nltk.pos_tag(temp, tagset='universal')
-            if tag[0][1] == 'NUM':
-                result4.append((w, 'OD'))
-            else:
-                result4.append((w, ''))
-        elif regexpieth.match(w):
-            temp = re.sub('ieth$', 'y', w)
-            temp = nltk.word_tokenize(temp)
-            tag = nltk.pos_tag(temp, tagset='universal')
-            if tag[0][1] == 'NUM':
-                result4.append((w, 'OD'))
-            else:
-                result4.append((w, ''))
+    result = []
+    for t in listoftokens:
+        if regexp.match(t):
+            result.append((t, 'OD'))
         else:
-            result4.append((w, ''))
-    return result4
+            result.append((t, ''))
+    return result
     
 # DO NOT MODIFY THE CODE BELOW
 
